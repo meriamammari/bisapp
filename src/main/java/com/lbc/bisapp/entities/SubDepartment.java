@@ -1,5 +1,6 @@
 package com.lbc.bisapp.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -9,16 +10,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 import java.util.List;
 
 @Entity
-@Table(name = "app_department")
+@Table(name = "app_sub_department")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Department {
+public class SubDepartment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +31,16 @@ public class Department {
     @Column(nullable = false, length = 50, unique = true)
     private String name;
 
-    // ✅ Relation avec les utilisateurs
-    @OneToMany(mappedBy = "department")
-    @JsonManagedReference
-    private List<User> users;
+    // 🔹 Relation vers Department
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "department_id", nullable = false)
+    @JsonBackReference
+    private Department department;
 
-    // ✅ Relation avec les sous-départements (sans @Transient)
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // 🔹 Relation vers User
+    @OneToMany(mappedBy = "subDepartment")
     @JsonManagedReference
-    private List<SubDepartment> subDepartments;
+    @Transient
+    private List<User> users;
 }
+
