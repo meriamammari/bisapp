@@ -1,0 +1,16 @@
+com\lbc\bisapp\controllers\DepartmentController.class
+com\lbc\bisapp\entities\enums\UserStatus.class
+com\lbc\bisapp\services\DepartmentService.class
+com\lbc\bisapp\repositories\userRepository.class
+com\lbc\bisapp\controllers\UserController.class
+com\lbc\bisapp\iservice\IDepartmentService.class
+com\lbc\bisapp\iservice\IUserService.class
+com\lbc\bisapp\services\UserService.class
+com\lbc\bisapp\BisappApplication.class
+com\lbc\bisapp\services\SubDepartmentService.class
+com\lbc\bisapp\repositories\DepartmentRepository.class
+com\lbc\bisapp\controllers\SubDepartmentController.class
+com\lbc\bisapp\entities\User.class
+com\lbc\bisapp\repositories\SubDepartmentRepository.class
+com\lbc\bisapp\entities\Department.class
+com\lbc\bisapp\entities\SubDepartment.class

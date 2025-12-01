@@ -1,0 +1,45 @@
+#  BisApp – Spring Boot REST API
+
+##  Description
+BisApp est une application **Spring Boot 3** permettant de gérer les **départements**, **sous-départements** et **utilisateurs** d’une organisation.  
+Elle expose une **API REST** documentée via **Swagger UI**, connectée à une base de données **PostgreSQL**.
+
+---
+
+##  Technologies
+- Java 21  
+- Spring Boot (Web, Data JPA, Validation)  
+- PostgreSQL  
+- Hibernate  
+- Lombok  
+- Swagger (springdoc-openapi)
+
+---
+
+##  Démarrage rapide
+
+###  Configurer la base de données
+Créer une base PostgreSQL :
+```sql
+CREATE DATABASE bisapp;
+
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/bisapp
+spring.datasource.username=postgres
+spring.datasource.password=motdepasse
+spring.jpa.hibernate.ddl-auto=update
+server.port=1234
+
+
+###   2 Lancer l'application
+
+mvn spring-boot:run
+http://localhost:1234/swagger-ui/index.html
+
+POST /users/create
+{
+  "name": "Ali",
+  "email": "ali@example.com",
+  "age": 28,
+  "department": { "id": 1 }
+}
